@@ -1,0 +1,15 @@
+{{ block "footer" . }}
+<!-- Footer -->
+<footer id="footer">
+	{{ $logopath := "images/logo-iriss-full.png" | relURL  }}
+        
+    <a href="https://www.iriss.org.uk/" class="logo-iriss"><img src="{{ $logopath }}" alt="Iriss" width="303" height="213"></a>
+    <p class="copyright">
+    	<!-- &copy; <a href="https://www.iriss.org.uk/">Iriss</a> {{  $.Site.Params.IrissCourseYearReleased }}.<br /> -->
+        <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        	<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+        </a> -->
+            This work is licensed under a <a rel="license" 
+            href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+</footer>
+{{ end }}

@@ -1,0 +1,23 @@
+{{ define "title" }}{{ .Site.Title }} - {{ .Title }}{{ end }}
+{{ define "main" }}
+{{ $featured_image := .Params.featured_image }}
+{{ $featured_image_alt := .Params.featured_image_alt }}
+<section>
+        <header class="main">
+            <h1>{{ .Title }}</h1>
+            {{ if .Params.subtitle }}<h2>{{ .Params.subtitle }}</h2>{{ end }}
+        </header>
+        {{ with $featured_image  }}
+        <span class="image main">
+            <img src="{{ $featured_image }}" alt="{{ $featured_image_alt }}" />
+        </span>
+        {{ end }}
+        {{ .Content }}
+        {{if .PrevPage}}
+        <hr class="major" />
+        <ul class="actions">
+            <li><a href="{{.PrevPage.Permalink}}" class="button big">Next</a></li>
+        </ul>
+        {{end}}
+</section>
+{{ end }}

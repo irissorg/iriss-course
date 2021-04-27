@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h1>Posts</h1>
+  {{ range .Pages }}
+    <article>
+      <h2>{{ .Title }}</h2>
+      This is the list template
+      {{ .Content }}
+    </article>
+  {{ end }}
+{{ end }}

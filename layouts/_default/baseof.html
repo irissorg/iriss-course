@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+    <head>
+        <meta charset="utf-8">
+		<title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+		{{ with .Params.description  }}
+		<meta name="description" content="{{ . }}" />
+		{{ end }}
+		<meta name="author" content="{{ $.Site.Params.IrissCourseAuthors }}" />
+        <!-- Mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://kit.fontawesome.com/e5f8a3a999.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+        {{ hugo.Generator }}
+		{{ $cssmain := resources.Get "css/main.css" }}
+		
+		{{ $cssie9 := resources.Get "css/ie9.css" }}
+		{{ $cssie8 := resources.Get "css/ie8.css" }}
+		{{ $jsshiv := resources.Get "js/ie/html5shiv.js" }}
+		
+		
+		<!--[if lte IE 8]><script src="{{ $jsshiv.Permalink }}"></script><![endif]-->
+		<link rel="stylesheet" href="{{ $cssmain.Permalink }}">
+		{{ "<!--[if lte IE 9]>" | safeHTML }}
+			<link rel="stylesheet" href="{{ $cssie9.Permalink }}" />
+		{{ "<![endif]-->" | safeHTML }}
+		
+		{{ "<!--[if lte IE 8]>" | safeHTML }}
+			<link rel="stylesheet" href="{{ $cssie8.Permalink }}" />
+		{{ "<![endif]-->" | safeHTML }}
+       {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
+       {{- template "_internal/opengraph.html" . -}}
+       {{- template "_internal/schema.html" . -}}
+       {{- template "_internal/twitter_cards.html" . -}}
+    </head> 
+    <body>
+	{{ $urlhome := "index.html" | relURL  }}
+
+		<!-- Wrapper -->
+        <div id="wrapper">
+                <!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{{ $urlhome }}" class="logo"><strong>{{ .Site.Title }}</strong></a>
+									<ul class="icons">
+
+
+										<li><a href="https://twitter.com/irissorg" class="icon fab fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/InstituteResearchInnovationSocialServices" class="icon fab fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://www.instagram.com/irissorg/" class="icon fab fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://vimeo.com/iriss" class="icon fab fa-vimeo-v"><span class="label">Vimeo</span></a></li>
+										<li><a href="https://podcast.iriss.org.uk" class="icon fas fa-podcast" aria-hidden="true"><span class="label">Iriss Podcast</span></a></li>
+									</ul>
+								</header>
+
+                                
+                                <!-- Code that all your templates share, like a header -->
+                                {{- block "main" . }}
+                                <!-- The part of the page that begins to differ between templates -->
+								{{- end }}
+								<hr class="major" />
+								<p>Iriss is a charitable company limited by guarantee. Registered in Scotland: No 313740. Scottish Charity No: SC037882. Registered Office: Brunswick House, 51 Wilson Street, Glasgow, G1 1UZ.</p>
+                                
+						</div>
+					</div>
+					
+					<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- <a href="#sidebar" class="toggle fas fa-bars" aria-hidden="true">Toggle</a> -->
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									{{- partial "mainnav.html" . }}
+								</nav>
+                                {{- partial "footer.html" . -}}
+						</div>
+					</div>
+			</div>
+		<!-- Scripts -->
+		{{ $jsjquery := resources.Get "js/jquery.min.js" }}
+		{{ $jsskel := resources.Get "js/skel.min.js" }}
+		{{ $jsutil := resources.Get "js/util.js" }}
+		{{ $jsrespond := resources.Get "js/ie/respond.min.js" }}
+		{{ $jsmain := resources.Get "js/main.js" }}
+        <script src="{{ $jsjquery.Permalink }}"></script>
+        <script src="{{ $jsskel.Permalink }}"></script>
+        <script src="{{ $jsutil.Permalink }}"></script>
+        <!--[if lte IE 8]><script src="{{ $jsrespond.Permalink }}"></script><![endif]-->
+        <script src="{{ $jsmain.Permalink }}"></script>
+        {{ template "_internal/google_analytics_async.html" . }}
+        <script type="text/javascript" id="cookieinfo"
+            src="//cookieinfoscript.com/js/cookieinfo.min.js"
+            data-bg="#64555B"
+            data-fg="#FFFFFF"
+            data-link="#DDC45C"
+            data-divlinkbg="#DDC45C"
+            data-cookie="CookieInfoScript"
+            data-text-align="left"
+            data-close-text="Got it!">
+        </script>
+
+        {{ $jsfeedback := resources.Get "js/feedback.dev.js" }}
+        <script src="{{ $jsfeedback.Permalink }}"></script>
+		<script>
+				gaf.init( {
+				'open': 'Feedback',
+				'title': 'We would love to hear your thoughts!',
+				'option1': 'Problem',
+				'option2': 'Suggestion',
+				'option3': 'Compliment',
+				'option4': 'Other',
+				'placeholder': 'Please enter your feedback here…',
+				'send': 'Send',
+				'thankyou': 'Thank you for your feedback!'
+			} );
+		</script>
+
+
+    </body>
+</html>

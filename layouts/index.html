@@ -1,0 +1,29 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<!-- Banner -->
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>{{ $.Site.Params.IrissHomeTitle }}</h1>
+            <!-- <h2>{{ .Params.subtitle }}</h2> -->
+            <p>Author: {{ $.Site.Params.IrissCourseAuthors }}</p>
+            <p>Published: {{ $.Site.Params.IrissPublishDate }}</p>
+        </header>
+        <hr class="major" />
+        <div class="copy">
+            {{ .Content }}
+        </div>
+        <ul class="actions">
+            <li><a href="{{ .Params.url_start}}" class="button big">Start</a></li>
+        </ul>
+    </div>
+    {{ $featured_image := .Params.featured_image }}
+    {{ $featured_image_alt := .Params.featured_image_alt}}
+    {{ if .Params.featured_image }}
+    {{ $featured_image := (trim $featured_image "/") | absURL }}
+    <span class="image object">
+        <img src="{{ $featured_image }}" class="img" alt="{{ $featured_image_alt }}">
+    </span>
+    {{ end }}
+</section>
+{{ end }}
